@@ -44,7 +44,8 @@ function FormForContacting() {
         reset,
         formState: { errors, isSubmitting },
     } = useForm<FormData>({
-        resolver: zodResolver(formSchema) as any,
+        // @ts-ignore - zod v4 compatibility with @hookform/resolvers
+        resolver: zodResolver(formSchema),
     });
 
     async function onSubmit(data: FormData) {
