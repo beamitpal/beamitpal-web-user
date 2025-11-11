@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client"
+  output = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id                   Int      @id @default(autoincrement())
+  firstName            String
+  lastName             String
+  displayName          String
+  username             String   @unique
+  gender               String?
+  pronouns             String?
+  bio                  String   @db.Text
+  flipSentences        String[]
+  address              String?
+  phoneNumber          String?
+  email                String?
+  website              String?
+  jobTitle             String?
+  jobs                 Json?
+  about                String   @db.Text
+  avatar               String?
+  ogImage              String?
+  namePronunciationUrl String?
+  keywords             String[]
+  dateCreated          DateTime
+
+  @@map("users")
+}
+
+
+model WorkExperience {
+  id                String   @id
+  companyName       String
+  companyLogo       String?
+  isCurrentEmployer Boolean  @default(false)
+  
+
+  positions         WorkPosition[]
+
+  @@map("work_experience")
+}
+
+model WorkPosition {
+  id               String   @id
+  title            String
+  employmentPeriod String
+  employmentType   String?
+  description      String   @db.Text
+  icon             String?
+  skills           String[]
+  isExpanded       Boolean  @default(false)
+
+  experienceId     String
+  experience       WorkExperience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+
+  @@map("work_position")
+}
+
+
+model Education {
+  id              String  @id
+  institutionName String
+  institutionLogo String?
+
+  degrees         Degree[]
+
+  @@map("education")
+}
+
+model Degree {
+  id          String   @id
+  title       String 
+  studyPeriod String 
+  description String   @db.Text
+  icon        String?
+  skills      String[]
+  isExpanded  Boolean  @default(false)
+
+  educationId String
+  education   Education @relation(fields: [educationId], references: [id], onDelete: Cascade)
+
+  @@map("degree")
+}
+
+model Post {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  slug        String   @unique
+  title       String
+  content     String   @db.Text
+  description String?  @db.Text
+  category    String?
+  pinned      Boolean  @default(false)
+  image       String?
+  icon        String?
+  isNew       Boolean  @default(false)
+
+  @@map("posts") 
+}
+
+model TechStack {
+  key         String   @id
+  title       String
+  href        String
+  categories  String[]
+  theme       Boolean  @default(false)
+
+  @@map("tech_stack")
+}
+
+
+model SocialLink {
+  id          Int     @id @default(autoincrement())
+  icon        String
+  title       String  @unique
+  description String?
+  href        String
+
+  @@map("social_links")
+}
+
+
+model Project {
+  id          String   @id
+  title       String
+  periodStart String
+  periodEnd   String?
+  link        String?
+  skills      String[]
+  description String   @db.Text
+  logo        String?
+  isExpanded  Boolean  @default(false)
+
+  @@map("projects")
+}
+
+model Certification {
+  id              Int     @id @default(autoincrement())
+  title           String
+  issuer          String
+  issuerIconName  String?
+  issuerLogoURL   String?
+  issueDate       String
+  credentialID    String?
+  credentialURL   String?
+
+  @@unique([title, issuer, issueDate], name: "title_issuer_issueDate")
+  @@map("certifications")
+}
+
+model Award {
+  id            String   @id
+  prize         String
+  title         String
+  date          String
+  grade         String?
+  description   String   @db.Text
+  referenceLink String?
+
+  @@map("awards")
+}
