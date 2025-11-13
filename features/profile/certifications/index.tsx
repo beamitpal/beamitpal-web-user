@@ -1,9 +1,13 @@
 import { CollapsibleList } from "@/components/ui/collapsible-list";
-import { CERTIFICATIONS } from "../data/certifications";
 import { Panel, PanelHeader, PanelTitle } from "@/components/ui/panel";
 import { CertificationItem } from "./certificate-item";
+import { getCertifications } from "../data/certifications";
 
-export function Certifications() {
+export const dynamic = "force-dynamic";
+
+export async function Certifications() {
+  const CERTIFICATIONS = await getCertifications();
+
   const sortedCerts = [...CERTIFICATIONS].sort(
     (a, b) => new Date(b.issueDate).getTime() - new Date(a.issueDate).getTime()
   );

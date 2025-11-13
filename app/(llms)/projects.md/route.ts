@@ -1,6 +1,11 @@
-import { PROJECTS } from "@/features/profile/data/projects";
+import { getProjects } from "@/features/profile/data/projects";
 
-const content = `# Projects
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  const PROJECTS = await getProjects();
+
+  const content = `# Projects
 
 ${PROJECTS.map((item) => {
   const skills = `\n\nSkills: ${item.skills.join(", ")}`;
@@ -9,9 +14,6 @@ ${PROJECTS.map((item) => {
 }).join("\n\n")}
 `;
 
-export const dynamic = "force-static";
-
-export async function GET() {
   return new Response(content, {
     headers: {
       "Content-Type": "text/markdown;charset=utf-8",

@@ -1,6 +1,5 @@
-
 import { NextResponse } from "next/server";
-import { WORK_EXPERIENCE as EXPERIENCES } from "@/features/profile/data/experience";
+import { getWorkExperience } from "@/features/profile/data/experience";
 
 function formatEmploymentPeriod(period: unknown): string {
   if (typeof period === "string") return period;
@@ -18,41 +17,40 @@ function formatSkills(skills: unknown): string {
   return "N/A";
 }
 
-const content = `# Experience
+function buildContent(experiences: any[]) {
+  return `# Experience
 
-${(EXPERIENCES ?? [])
-  .map((item: any) => {
-    const company =
-      item?.companyName ?? item?.company ?? item?.org ?? "Unknown Company";
+${(experiences ?? [])
+    .map((item: any) => {
+      const company =
+        item?.companyName ?? item?.company ?? item?.org ?? "Unknown Company";
 
-    const positions: any[] = Array.isArray(item?.positions)
-      ? item.positions
-      : [];
+      const positions: any[] = Array.isArray(item?.positions)
+        ? item.positions
+        : [];
 
-    const blocks = positions.map((position) => {
-      const title = position?.title ?? "Untitled";
-      const period = formatEmploymentPeriod(position?.employmentPeriod);
-      const skills = formatSkills(position?.skills);
-      const description = (position?.description ?? "").toString().trim();
+      const blocks = positions.map((position) => {
+        const title = position?.title ?? "Untitled";
+        const period = formatEmploymentPeriod(position?.employmentPeriod);
+        const skills = formatSkills(position?.skills);
+        const description = (position?.description ?? "").toString().trim();
 
-      return `## ${title} | ${company}
+        return `## ${title} | ${company}\n\nDuration: ${period}\n\nSkills: ${skills}\n\n${description}`;
+      });
 
-Duration: ${period}
-
-Skills: ${skills}
-
-${description}`;
-    });
-
-    return blocks.join("\n\n");
-  })
-  .filter(Boolean)
-  .join("\n\n")}
+      return blocks.join("\n\n");
+    })
+    .filter(Boolean)
+    .join("\n\n")}
 `;
+}
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const experiences = await getWorkExperience();
+  const content = buildContent(experiences);
+
   return new NextResponse(content, {
     status: 200,
     headers: { "Content-Type": "text/markdown; charset=utf-8" },

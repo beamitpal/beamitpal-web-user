@@ -7,15 +7,19 @@ import {
   PanelTitle,
 } from "@/components/ui/panel";
 import { AwardItem } from "./award-item";
-import { AWARDS } from "../data/awards";
+import { getAwards } from "../data/awards";
 
-const SORTED_AWARDS = [...AWARDS].sort((a, b) => {
-  const aDate = dayjs(a.date);
-  const bDate = dayjs(b.date);
-  return bDate.isAfter(aDate) ? 1 : bDate.isBefore(aDate) ? -1 : 0;
-});
+export const dynamic = "force-dynamic";
 
-export function Awards() {
+export async function Awards() {
+  const AWARDS = await getAwards();
+
+  const SORTED_AWARDS = [...AWARDS].sort((a, b) => {
+    const aDate = dayjs(a.date);
+    const bDate = dayjs(b.date);
+    return bDate.isAfter(aDate) ? 1 : bDate.isBefore(aDate) ? -1 : 0;
+  });
+
   return (
     <Panel id="awards">
       <PanelHeader>

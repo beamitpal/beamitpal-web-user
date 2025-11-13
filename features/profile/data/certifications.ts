@@ -1,8 +1,8 @@
 import prisma from '@/lib/prisma';
 import type { Certification } from "../types/certifications";
 
-export const CERTIFICATIONS: Certification[] = (
-  await prisma.certification.findMany({
+export async function getCertifications(): Promise<Certification[]> {
+  const rows = await prisma.certification.findMany({
     select: {
       title: true,
       issuer: true,
@@ -15,20 +15,22 @@ export const CERTIFICATIONS: Certification[] = (
     orderBy: {
       issueDate: 'desc',
     },
-  })
-).map((cert) => {
-  const issuerLogoURL = cert.issuerLogoURL ?? undefined; 
-  const issuerIconName = cert.issuerIconName?.trim() || undefined;
+  });
 
-  const hasLogo = !!issuerLogoURL;
+  return rows.map((cert) => {
+    const issuerLogoURL = cert.issuerLogoURL ?? undefined; 
+    const issuerIconName = cert.issuerIconName?.trim() || undefined;
 
-  return {
-    title: cert.title,
-    issuer: cert.issuer,
-    issuerLogoURL: hasLogo ? issuerLogoURL : undefined,
-    issuerIconName: hasLogo ? undefined : issuerIconName,
-    issueDate: cert.issueDate,
-    credentialID: cert.credentialID ?? '',
-    credentialURL: cert.credentialURL ?? '',
-  };
-});
+    const hasLogo = !!issuerLogoURL;
+
+    return {
+      title: cert.title,
+      issuer: cert.issuer,
+      issuerLogoURL: hasLogo ? issuerLogoURL : undefined,
+      issuerIconName: hasLogo ? undefined : issuerIconName,
+      issueDate: cert.issueDate,
+      credentialID: cert.credentialID ?? '',
+      credentialURL: cert.credentialURL ?? '',
+    };
+  });
+}

@@ -1,9 +1,12 @@
 import { Panel, PanelHeader, PanelTitle } from "@/components/ui/panel";
 import { ProjectItem } from "./project-item";
-import { PROJECTS } from "../data/projects";
 import { CollapsibleList } from "@/components/ui/collapsible-list";
+import { getProjects } from "../data/projects";
 
-export function Projects() {
+export const dynamic = "force-dynamic";
+
+export async function Projects() {
+  const PROJECTS = await getProjects();
 
   const sortedProjects = [...PROJECTS].sort((a, b) => {
     const aId = parseInt(a.id ?? "0", 10);

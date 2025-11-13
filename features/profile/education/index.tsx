@@ -1,8 +1,12 @@
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/components/ui/panel";
 import {  WorkExperience } from "@/components/work-experience";
-import { EDUCATION } from "../data/education";
+import { getEducation } from "../data/education";
 
-export default function Education() {
+export const dynamic = "force-dynamic";
+
+export default async function Education() {
+    const EDUCATION = await getEducation();
+
     return (
         <>
             <Panel id="education">

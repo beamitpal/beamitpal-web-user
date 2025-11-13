@@ -1,8 +1,12 @@
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/components/ui/panel";
 import { WorkExperience } from "@/components/work-experience";
-import { WORK_EXPERIENCE } from "../data/experience";
+import { getWorkExperience } from "../data/experience";
 
-export default function Experience() {
+export const dynamic = "force-dynamic";
+
+export default async function Experience() {
+    const WORK_EXPERIENCE = await getWorkExperience();
+
     return (
         <>
             <Panel id="experience">

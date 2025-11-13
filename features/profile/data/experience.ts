@@ -1,8 +1,8 @@
 import prisma from '@/lib/prisma';
 import type { ExperienceItemType } from "@/components/work-experience";
 
-export const WORK_EXPERIENCE: ExperienceItemType[] = (
-  await prisma.workExperience.findMany({
+export async function getWorkExperience(): Promise<ExperienceItemType[]> {
+  const rows = await prisma.workExperience.findMany({
     select: {
       id: true,
       companyName: true,
@@ -22,19 +22,21 @@ export const WORK_EXPERIENCE: ExperienceItemType[] = (
       },
     },
     orderBy: { id: 'asc' },
-  })
-).map((exp) => ({
-  id: exp.id,
-  companyName: exp.companyName,
-  isCurrentEmployer: exp.isCurrentEmployer,
-  positions: exp.positions.map((pos) => ({
-    id: pos.id,
-    title: pos.title,
-    employmentPeriod: pos.employmentPeriod,
-    employmentType: pos.employmentType ?? undefined,
-    description: pos.description,
-    icon: (pos.icon ?? undefined) as "code" | "design" | "business" | "education" | undefined,
-    skills: pos.skills,
-    isExpanded: pos.isExpanded,
-  })),
-}));
+  });
+
+  return rows.map((exp) => ({
+    id: exp.id,
+    companyName: exp.companyName,
+    isCurrentEmployer: exp.isCurrentEmployer,
+    positions: exp.positions.map((pos) => ({
+      id: pos.id,
+      title: pos.title,
+      employmentPeriod: pos.employmentPeriod,
+      employmentType: pos.employmentType ?? undefined,
+      description: pos.description,
+      icon: (pos.icon ?? undefined) as "code" | "design" | "business" | "education" | undefined,
+      skills: pos.skills,
+      isExpanded: pos.isExpanded,
+    })),
+  }));
+}

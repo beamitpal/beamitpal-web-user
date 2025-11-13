@@ -1,11 +1,13 @@
-import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
-import { TECH_STACK } from "@/features/profile/data/tech-stack";
+import { getSocialLinks } from "@/features/profile/data/social-links";
+import { getTechStack } from "@/features/profile/data/tech-stack";
 import { USERS } from "@/features/profile/data/user";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const user = await USERS();
+  const SOCIAL_LINKS = await getSocialLinks();
+  const TECH_STACK = await getTechStack();
 
   const content = `# About
 

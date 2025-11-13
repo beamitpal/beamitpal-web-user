@@ -1,10 +1,14 @@
 import React from "react";
 
-import { SOCIAL_LINKS } from "../data/social-links";
 import { Panel } from "@/components/ui/panel";
 import { SocialLinkItem } from "./social-link-items";
+import { getSocialLinks } from "../data/social-links";
 
-export function SocialLinks() {
+export const dynamic = "force-dynamic";
+
+export async function SocialLinks() {
+  const SOCIAL_LINKS = await getSocialLinks();
+
   return (
     <Panel>
       <h2 className="sr-only">Social Links</h2>

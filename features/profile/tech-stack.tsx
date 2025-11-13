@@ -4,10 +4,14 @@ import Image from "next/image";
 import { SimpleTooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
-import { TECH_STACK } from "./data/tech-stack";
+import { getTechStack } from "./data/tech-stack";
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/components/ui/panel";
 
-export function TeckStack() {
+export const dynamic = "force-dynamic";
+
+export async function TeckStack() {
+  const TECH_STACK = await getTechStack();
+
   return (
     <Panel id="stack">
       <PanelHeader>
