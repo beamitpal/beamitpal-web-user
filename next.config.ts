@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       beforeFiles: [
         { source: '/about.md', destination: '/about-md' },
         { source: '/awards.md', destination: '/awards-md' },
+        { source: '/blog.mdx/:slug.mdx', destination: '/blog-mdx/:slug' },
         { source: '/blog.mdx/:path*', destination: '/blog-mdx/:path*' },
         { source: '/certifications.md', destination: '/certifications-md' },
         { source: '/experience.md', destination: '/experience-md' },
