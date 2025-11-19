@@ -1,4 +1,5 @@
 import "./globals.css";
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 
@@ -48,7 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          <NuqsAdapter>{children}</NuqsAdapter>
+        </Providers>
       </body>
     </html>
   );

@@ -8,10 +8,13 @@ import { getAllPosts } from "@/features/blog/data/post";
 
 import { Panel, PanelHeader, PanelTitle } from "@/components/ui/panel";
 
+import { toBlogPost } from "@/features/blog/lib/mappers";
+
 type PostType = Awaited<ReturnType<typeof getAllPosts>>[number];
 
 export async function Blog() {
   const allPosts = await getAllPosts();
+  const posts = allPosts.map(toBlogPost);
 
   return (
     <Panel id="blog">
@@ -26,7 +29,7 @@ export async function Blog() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {allPosts.slice(0, 4).map((post: PostType) => (
+          {posts.slice(0, 4).map((post) => (
             <PostItem key={post.slug} post={post} />
           ))}
         </div>
