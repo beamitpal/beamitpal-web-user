@@ -18,7 +18,7 @@ async function getContent() {
       const title = ensureText(item?.metadata?.title || item?.title || item?.slug || "Untitled");
       const description = ensureText(item?.metadata?.description, "");
       const slug = ensureText(item?.slug, "");
-      return `- [${title}](${SITE_INFO.url}/blog/${slug}.mdx): ${description}`;
+      return `- [${title}](${SITE_INFO.url}/blog.mdx/${slug}.mdx): ${description}`;
     })
     .join("\n");
 
@@ -38,7 +38,7 @@ ${blogList}
 `;
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const content = await getContent();

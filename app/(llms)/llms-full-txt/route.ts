@@ -50,7 +50,7 @@ async function getBlogContent() {
         ? dayjs(item.metadata.updatedAt).format("MMMM D, YYYY")
         : "Unknown";
 
-      const source = `${SITE_INFO.url}/blog/${item.slug}`;
+      const source = `${SITE_INFO.url}/blog.mdx/${item.slug}.mdx`;
       const body = await getLLMText(item);
 
       return `---\ntitle: "${title}"\ndescription: "${description}"\nlast_updated: "${lastUpdated}"\nsource: "${source}"\n---\n\n${body}`;
