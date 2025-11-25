@@ -76,7 +76,7 @@ export function PositionForm({
         <Input
           id="employmentType"
           name="employmentType"
-          defaultValue={position?.employmentType}
+          defaultValue={position?.employmentType || ""}
           placeholder="Full-time"
           required
         />
