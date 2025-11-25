@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import type { Post } from "@/generated/prisma/client";
+import { Post } from "@prisma/client";
 
 export function PostKeyboardShortcuts({
   basePath,

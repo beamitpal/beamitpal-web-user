@@ -23,7 +23,7 @@ import {
 
 import { USERS } from "@/features/profile/data/user";
 import { cn } from "@/lib/utils";
-import { Post } from "@/generated/prisma/client";
+import { Post } from "@prisma/client";
 
 
 

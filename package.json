@@ -6,7 +6,7 @@
     "dev": "pnpm run generate && next dev",
     "build": "pnpm run generate && next build",
     "start": "next start",
-    "generate": "pnpm dlx prisma generate",
+    "generate": "pnpm exec prisma generate",
     "push": "pnpm dlx prisma db push",
     "studio": "pnpm dlx prisma studio",
     "postinstall": "pnpm run generate",

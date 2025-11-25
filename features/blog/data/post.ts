@@ -1,5 +1,5 @@
 
-import { Post } from "@/generated/prisma/client";
+import { Post } from "@prisma/client";
 import prisma from "@/lib/prisma";
 
 export async function getAllPosts() {

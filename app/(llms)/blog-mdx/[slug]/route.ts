@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { getAllPosts, getPostBySlug } from "@/features/blog/data/post";
 import { getLLMText } from "@/features/blog/lib/get-llm-text";
 import type { Post as BlogPost } from "@/features/blog/types/post";
-import type { Post as DbPost } from "@/generated/prisma/client";
+import { Post } from "@prisma/client";
 
 
 function safeDecode(s: string) { try { return decodeURIComponent(s); } catch { return s; } }
@@ -14,7 +14,7 @@ function normalizeSlug(raw: string) {
   return s;
 }
 
-function toBlogPost(db: DbPost): BlogPost {
+function toBlogPost(db: Post): BlogPost {
   const anyDb = db as any;
   const created = anyDb.metadata?.createdAt ?? db.createdAt;
   const updated = anyDb.metadata?.updatedAt ?? db.updatedAt;

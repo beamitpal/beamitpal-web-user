@@ -1,7 +1,7 @@
-import type { Post as DbPost } from "@/generated/prisma/client";
+import { Post } from "@prisma/client";
 import type { Post as AppPost } from "../types/post";
 
-export function toBlogPost(post: DbPost): AppPost {
+export function toBlogPost(post: Post): AppPost {
   return {
     slug: post.slug,
     content: post.content,
