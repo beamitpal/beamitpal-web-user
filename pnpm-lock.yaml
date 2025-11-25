@@ -17,9 +17,18 @@ importers:
       '@prisma/client':
         specifier: ^6.19.0
         version: 6.19.0(prisma@6.19.0(typescript@5.9.3))(typescript@5.9.3)
+      '@radix-ui/react-avatar':
+        specifier: ^1.1.11
+        version: 1.1.11(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-checkbox':
+        specifier: ^1.3.3
+        version: 1.3.3(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@radix-ui/react-collapsible':
         specifier: ^1.1.12
         version: 1.1.12(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-dialog':
+        specifier: ^1.1.15
+        version: 1.1.15(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.1.16
         version: 2.1.16(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -32,6 +41,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.2.2)(react@19.2.0)
+      '@radix-ui/react-tooltip':
+        specifier: ^1.2.8
+        version: 1.2.8(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -47,6 +59,9 @@ importers:
       fumadocs-core:
         specifier: ^16.0.7
         version: 16.0.7(@types/react@19.2.2)(lucide-react@0.552.0(react@19.2.0))(next@16.0.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      jose:
+        specifier: ^6.1.2
+        version: 6.1.2
       jotai:
         specifier: ^2.15.1
         version: 2.15.1(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.2)(react@19.2.0)
@@ -1018,6 +1033,19 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@radix-ui/react-avatar@1.1.11':
+    resolution: {integrity: sha512-0Qk603AHGV28BOBO34p7IgD5m+V5Sg/YovfayABkoDDBM5d3NCx0Mp4gGrjzLGes1jV5eNOE1r3itqOR33VC6Q==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@radix-ui/react-checkbox@1.3.3':
     resolution: {integrity: sha512-wBbpv+NQftHDdG86Qc0pIyXk5IR3tM8Vd0nWLKDcX8nNn4nXFOFwsKuqw2okA/1D/mpaAkmuyndrPJTYDNZtFw==}
     peerDependencies:
@@ -1081,6 +1109,15 @@ packages:
 
   '@radix-ui/react-context@1.1.2':
     resolution: {integrity: sha512-jCi/QKUM2r1Ju5a3J64TH2A5SpKAgh0LpknyqdQ4m6DCV0xJ2HG1xARRwNGPQfi1SLdLWZ1OJz6F4OMBBNiGJA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@radix-ui/react-context@1.1.3':
+    resolution: {integrity: sha512-ieIFACdMpYfMEjF0rEf5KLvfVyIkOz6PDGyNnP+u+4xQ6jny3VCgA4OgXOwNx2aUkxn8zx9fiVcM8CfFYv9Lxw==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
@@ -3319,6 +3356,9 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
+
+  jose@6.1.2:
+    resolution: {integrity: sha512-MpcPtHLE5EmztuFIqB0vzHAWJPpmN1E6L4oo+kze56LIs3MyXIj9ZHMDxqOvkP38gBR7K1v3jqd4WU2+nrfONQ==}
 
   jotai@2.15.1:
     resolution: {integrity: sha512-yHT1HAZ3ba2Q8wgaUQ+xfBzEtcS8ie687I8XVCBinfg4bNniyqLIN+utPXWKQE93LMF5fPbQSVRZqgpcN5yd6Q==}
@@ -5677,6 +5717,19 @@ snapshots:
       '@types/react': 19.2.2
       '@types/react-dom': 19.2.2(@types/react@19.2.2)
 
+  '@radix-ui/react-avatar@1.1.11(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@radix-ui/react-context': 1.1.3(@types/react@19.2.2)(react@19.2.0)
+      '@radix-ui/react-primitive': 2.1.4(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.2)(react@19.2.0)
+      '@radix-ui/react-use-is-hydrated': 0.1.0(@types/react@19.2.2)(react@19.2.0)
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.2)(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+    optionalDependencies:
+      '@types/react': 19.2.2
+      '@types/react-dom': 19.2.2(@types/react@19.2.2)
+
   '@radix-ui/react-checkbox@1.3.3(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@radix-ui/primitive': 1.1.3
@@ -5742,6 +5795,12 @@ snapshots:
       '@types/react-dom': 19.2.2(@types/react@19.2.2)
 
   '@radix-ui/react-context@1.1.2(@types/react@19.2.2)(react@19.2.0)':
+    dependencies:
+      react: 19.2.0
+    optionalDependencies:
+      '@types/react': 19.2.2
+
+  '@radix-ui/react-context@1.1.3(@types/react@19.2.2)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
@@ -8269,6 +8328,8 @@ snapshots:
       set-function-name: 2.0.2
 
   jiti@2.6.1: {}
+
+  jose@6.1.2: {}
 
   jotai@2.15.1(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.2)(react@19.2.0):
     optionalDependencies:
