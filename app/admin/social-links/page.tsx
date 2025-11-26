@@ -14,6 +14,8 @@ import { SocialLinkActions } from "@/components/social-link-actions";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function SocialLinksPage() {
   const links = await prisma.socialLink.findMany({
     orderBy: { title: "asc" },

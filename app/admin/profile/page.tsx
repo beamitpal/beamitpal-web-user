@@ -4,6 +4,8 @@ import { ProfileForm } from "@/components/profile-form";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function ProfilePage() {
 
   const user = await prisma.user.findFirst();

@@ -4,6 +4,8 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function AdminDashboard() {
   // Fetch real counts from database
   const [

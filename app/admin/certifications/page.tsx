@@ -14,6 +14,8 @@ import { CertificationActions } from "@/components/certification-actions";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function CertificationsPage() {
   const certifications = await prisma.certification.findMany({
     orderBy: { issueDate: "desc" },

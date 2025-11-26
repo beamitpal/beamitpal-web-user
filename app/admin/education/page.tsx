@@ -6,6 +6,8 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/comp
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function EducationPage() {
   const educations = await prisma.education.findMany({
     include: {

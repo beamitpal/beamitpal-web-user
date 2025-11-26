@@ -14,6 +14,8 @@ import { BlogListActions } from "@/components/blog-list-actions";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function BlogsPage() {
   const posts = await prisma.post.findMany({
     orderBy: { createdAt: "desc" },

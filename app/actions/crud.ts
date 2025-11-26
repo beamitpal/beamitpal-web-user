@@ -19,6 +19,7 @@ export async function createTechStack(formData: FormData) {
     },
   });
   revalidatePath("/admin/tech-stack");
+  revalidatePath("/");
   redirect("/admin/tech-stack");
 }
 
@@ -34,12 +35,14 @@ export async function updateTechStack(key: string, formData: FormData) {
     },
   });
   revalidatePath("/admin/tech-stack");
+  revalidatePath("/");
   redirect("/admin/tech-stack");
 }
 
 export async function deleteTechStack(key: string) {
   await prisma.techStack.delete({ where: { key } });
   revalidatePath("/admin/tech-stack");
+  revalidatePath("/");
 }
 
 // ========== SOCIAL LINKS ==========
@@ -53,6 +56,7 @@ export async function createSocialLink(formData: FormData) {
     },
   });
   revalidatePath("/admin/social-links");
+  revalidatePath("/");
   redirect("/admin/social-links");
 }
 
@@ -67,12 +71,14 @@ export async function updateSocialLink(id: number, formData: FormData) {
     },
   });
   revalidatePath("/admin/social-links");
+  revalidatePath("/");
   redirect("/admin/social-links");
 }
 
 export async function deleteSocialLink(id: number) {
   await prisma.socialLink.delete({ where: { id } });
   revalidatePath("/admin/social-links");
+  revalidatePath("/");
 }
 
 // ========== PROJECTS ==========
@@ -92,6 +98,7 @@ export async function createProject(formData: FormData) {
     },
   });
   revalidatePath("/admin/projects");
+  revalidatePath("/");
   redirect("/admin/projects");
 }
 
@@ -111,12 +118,14 @@ export async function updateProject(id: string, formData: FormData) {
     },
   });
   revalidatePath("/admin/projects");
+  revalidatePath("/");
   redirect("/admin/projects");
 }
 
 export async function deleteProject(id: string) {
   await prisma.project.delete({ where: { id } });
   revalidatePath("/admin/projects");
+  revalidatePath("/");
 }
 
 // ========== CERTIFICATIONS ==========
@@ -133,6 +142,7 @@ export async function createCertification(formData: FormData) {
     },
   });
   revalidatePath("/admin/certifications");
+  revalidatePath("/");
   redirect("/admin/certifications");
 }
 
@@ -150,12 +160,14 @@ export async function updateCertification(id: number, formData: FormData) {
     },
   });
   revalidatePath("/admin/certifications");
+  revalidatePath("/");
   redirect("/admin/certifications");
 }
 
 export async function deleteCertification(id: number) {
   await prisma.certification.delete({ where: { id } });
   revalidatePath("/admin/certifications");
+  revalidatePath("/");
 }
 
 // ========== AWARDS ==========
@@ -172,6 +184,7 @@ export async function createAward(formData: FormData) {
     },
   });
   revalidatePath("/admin/awards");
+  revalidatePath("/");
   redirect("/admin/awards");
 }
 
@@ -188,10 +201,12 @@ export async function updateAward(id: string, formData: FormData) {
     },
   });
   revalidatePath("/admin/awards");
+  revalidatePath("/");
   redirect("/admin/awards");
 }
 
 export async function deleteAward(id: string) {
   await prisma.award.delete({ where: { id } });
   revalidatePath("/admin/awards");
+  revalidatePath("/");
 }

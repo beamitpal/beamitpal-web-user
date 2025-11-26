@@ -39,6 +39,7 @@ export async function createBlog(formData: FormData) {
 
   revalidatePath("/admin/blogs");
   revalidatePath("/blog");
+  revalidatePath("/");
   redirect("/admin/blogs");
 }
 
@@ -66,6 +67,7 @@ export async function updateBlog(id: number, formData: FormData) {
   revalidatePath("/admin/blogs");
   revalidatePath("/blog");
   revalidatePath(`/blog/${validated.slug}`);
+  revalidatePath("/");
   redirect("/admin/blogs");
 }
 
@@ -76,4 +78,5 @@ export async function deleteBlog(id: number) {
 
   revalidatePath("/admin/blogs");
   revalidatePath("/blog");
+  revalidatePath("/");
 }

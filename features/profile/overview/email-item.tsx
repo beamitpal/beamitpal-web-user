@@ -1,11 +1,12 @@
 "use client";
 
 import { MailIcon } from "lucide-react";
-
-import { useIsClient } from "@/hooks/use-is-client";
-import { decodeEmail } from "@/utils/string";
-
 import { IntroItem } from "./intro-item";
+import { useIsClient } from "@/hooks/use-is-client";
+
+function decodeEmail(encoded: string): string {
+  return atob(encoded);
+}
 
 export function EmailItem({ email }: { email: string }) {
   const isClient = useIsClient();

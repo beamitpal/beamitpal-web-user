@@ -2,11 +2,8 @@ import dayjs from "dayjs";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 import { About } from "@/features/profile/about";
-import { Overview } from "@/features/profile/overview";
 import { SocialLinks } from "@/features/profile/social-links";
 import { cn } from "@/lib/utils";
-import { ProfileCover } from "@/features/profile/profile-cover";
-import { ProfileHeader } from "@/features/profile/profile-header";
 import Experience from "@/features/profile/experience";
 import { Projects } from "@/features/profile/projects";
 import { Awards } from "@/features/profile/awards";
@@ -17,6 +14,9 @@ import Education from "@/features/profile/education";
 import { Blog } from "@/features/profile/blog";
 import { USERS } from "@/features/profile/data/user";
 import ContactForm from "@/features/profile/contact/form";
+import NewProfileHeader from "@/features/profile/new-profile-header";
+
+export const revalidate = 0;
 
 export default async function Page() {
   const user = await USERS();
@@ -44,10 +44,7 @@ export default async function Page() {
       />
 
       <div className="mx-auto md:max-w-3xl">
-        <ProfileCover />
-        <ProfileHeader />
-        <Separator />
-        <Overview />
+        <NewProfileHeader />
         <Separator />
 
         <SocialLinks />

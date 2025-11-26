@@ -17,6 +17,7 @@ export async function createExperience(formData: FormData) {
     },
   });
   revalidatePath("/admin/experience");
+  revalidatePath("/");
   redirect("/admin/experience");
 }
 
@@ -30,12 +31,14 @@ export async function updateExperience(id: string, formData: FormData) {
     },
   });
   revalidatePath("/admin/experience");
+  revalidatePath("/");
   redirect("/admin/experience");
 }
 
 export async function deleteExperience(id: string) {
   await prisma.workExperience.delete({ where: { id } });
   revalidatePath("/admin/experience");
+  revalidatePath("/");
 }
 
 // ========== WORK POSITION (nested under Experience) ==========
@@ -55,6 +58,7 @@ export async function createPosition(experienceId: string, formData: FormData) {
     },
   });
   revalidatePath(`/admin/experience/${experienceId}`);
+  revalidatePath("/");
   redirect(`/admin/experience/${experienceId}`);
 }
 
@@ -74,6 +78,7 @@ export async function updatePosition(id: string, formData: FormData) {
   });
   const position = await prisma.workPosition.findUnique({ where: { id } });
   revalidatePath(`/admin/experience/${position?.experienceId}`);
+  revalidatePath("/");
   redirect(`/admin/experience/${position?.experienceId}`);
 }
 
@@ -81,6 +86,7 @@ export async function deletePosition(id: string) {
   const position = await prisma.workPosition.findUnique({ where: { id } });
   await prisma.workPosition.delete({ where: { id } });
   revalidatePath(`/admin/experience/${position?.experienceId}`);
+  revalidatePath("/");
 }
 
 // ========== EDUCATION ==========
@@ -93,6 +99,7 @@ export async function createEducation(formData: FormData) {
     },
   });
   revalidatePath("/admin/education");
+  revalidatePath("/");
   redirect("/admin/education");
 }
 
@@ -105,12 +112,14 @@ export async function updateEducation(id: string, formData: FormData) {
     },
   });
   revalidatePath("/admin/education");
+  revalidatePath("/");
   redirect("/admin/education");
 }
 
 export async function deleteEducation(id: string) {
   await prisma.education.delete({ where: { id } });
   revalidatePath("/admin/education");
+  revalidatePath("/");
 }
 
 // ========== DEGREE (nested under Education) ==========
@@ -129,6 +138,7 @@ export async function createDegree(educationId: string, formData: FormData) {
     },
   });
   revalidatePath(`/admin/education/${educationId}`);
+  revalidatePath("/");
   redirect(`/admin/education/${educationId}`);
 }
 
@@ -147,6 +157,7 @@ export async function updateDegree(id: string, formData: FormData) {
   });
   const degree = await prisma.degree.findUnique({ where: { id } });
   revalidatePath(`/admin/education/${degree?.educationId}`);
+  revalidatePath("/");
   redirect(`/admin/education/${degree?.educationId}`);
 }
 
@@ -154,4 +165,5 @@ export async function deleteDegree(id: string) {
   const degree = await prisma.degree.findUnique({ where: { id } });
   await prisma.degree.delete({ where: { id } });
   revalidatePath(`/admin/education/${degree?.educationId}`);
+  revalidatePath("/");
 }

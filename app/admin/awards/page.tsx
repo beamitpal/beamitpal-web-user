@@ -14,6 +14,8 @@ import { AwardActions } from "@/components/award-actions";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function AwardsPage() {
   const awards = await prisma.award.findMany({
     orderBy: { date: "desc" },

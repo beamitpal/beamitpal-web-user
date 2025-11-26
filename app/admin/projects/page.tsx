@@ -14,6 +14,8 @@ import { ProjectActions } from "@/components/project-actions";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function ProjectsPage() {
   const projects = await prisma.project.findMany({
     orderBy: { periodStart: "desc" },

@@ -35,5 +35,6 @@ export async function updateUserProfile(id: number, formData: FormData) {
   });
 
   revalidatePath("/admin/profile");
+  revalidatePath("/");
   redirect("/admin/profile");
 }

@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 export default async function ExperiencePage() {
   const experiences = await prisma.workExperience.findMany({
     include: {

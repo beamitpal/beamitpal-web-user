@@ -1,24 +1,37 @@
 import {
-  BriefcaseBusinessIcon,
-  CodeXmlIcon,
-  LightbulbIcon,
+  BriefcaseIcon,
+  CodeIcon,
+  RocketIcon,
+  TerminalIcon,
 } from "lucide-react";
-
-import { UTM_PARAMS } from "@/config/site/static";
-import { addQueryParams } from "@/utils/url";
-
 import { IntroItem } from "./intro-item";
+import { addQueryParams } from "@/utils/url";
+import { UTM_PARAMS } from "@/config/site/static";
 
 function getJobIcon(title: string) {
-  if (/(developer|engineer)/i.test(title)) {
-    return CodeXmlIcon;
+  const lowerTitle = title.toLowerCase();
+
+  if (
+    lowerTitle.includes("engineer") ||
+    lowerTitle.includes("developer") ||
+    lowerTitle.includes("programmer")
+  ) {
+    return CodeIcon;
   }
 
-  if (/(founder|co-founder)/i.test(title)) {
-    return LightbulbIcon;
+  if (lowerTitle.includes("founder") || lowerTitle.includes("ceo")) {
+    return RocketIcon;
   }
 
-  return BriefcaseBusinessIcon;
+  if (
+    lowerTitle.includes("devops") ||
+    lowerTitle.includes("sre") ||
+    lowerTitle.includes("infrastructure")
+  ) {
+    return TerminalIcon;
+  }
+
+  return BriefcaseIcon;
 }
 
 export function JobItem({
