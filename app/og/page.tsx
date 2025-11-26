@@ -1,7 +1,4 @@
-
-
-import { Overview } from "@/features/profile/overview";
-import { ProfileHeader } from "@/features/profile/profile-header";
+import ProfileHeader from "@/features/profile/new-profile-header";
 import { cn } from "@/lib/utils";
 
 export default function Page() {
@@ -11,12 +8,8 @@ export default function Page() {
         <div className="screen-line-after grow border-x border-edge after:-bottom-px">
           <div className="flex h-4" />
         </div>
-
         <ProfileHeader />
         <Separator />
-
-        <Overview />
-
         <div className="grow border-x border-edge" />
       </div>
     </>
