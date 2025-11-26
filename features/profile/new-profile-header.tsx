@@ -8,7 +8,7 @@ async function NewProfileHeader() {
 
   return (
     <Panel id="profile">
-      <PanelContent className="p-6">
+      <PanelContent className="py-2 px-3 sm:py-3 sm:px-4">
         <ProfileCard user={user} />
       </PanelContent>
     </Panel>
