@@ -11,15 +11,16 @@ export function rehypeComponent() {
     visit(tree, (node: UnistNode) => {
       // Find the 'src' attribute
       const srcAttr = getNodeAttributeByName(node, "src");
-      const srcPath = srcAttr?.value as string | undefined;
+      const srcPath = srcAttr?.value;
 
       if (node.name === "ComponentSource") {
-        if (!srcPath) {
+        if (typeof srcPath !== "string" || !srcPath) {
           return null;
         }
 
         try {
-          const src = path.join(process.cwd(), srcPath);
+          const normalizedSrcPath = srcPath.replace(/^@\//, "");
+          const src = path.join(process.cwd(), normalizedSrcPath);
 
           const filePath = src;
           let source = fs.readFileSync(filePath, "utf8");
