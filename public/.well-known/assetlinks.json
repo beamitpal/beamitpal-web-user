@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.beamitpal.twa",
+      "sha256_cert_fingerprints": [
+        "0E:F3:20:B7:59:82:52:52:B0:3C:B1:98:28:21:C2:E8:CC:39:95:09:C9:95:1C:F2:77:9D:52:BE:FF:76:38:DD"
+      ]
+    }
+  }
+]
