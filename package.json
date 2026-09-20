@@ -3,15 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm run generate && next dev",
-    "build": "pnpm run generate && next build",
-    "start": "next start",
-    "generate": "pnpm exec prisma generate",
-    "push": "pnpm dlx prisma db push",
-    "studio": "pnpm dlx prisma studio",
-    "postinstall": "pnpm run generate",
-    "lint": "eslint"
-  },
+  "dev": "pnpm run generate && next dev",
+  "build": "pnpm run generate && next build",
+  "start": "next start",
+  "generate": "pnpm exec prisma generate",
+  "push": "pnpm dlx prisma db push",
+  "studio": "pnpm dlx prisma studio",
+  "lint": "eslint"
+},
   "dependencies": {
     "@bprogress/next": "^3.2.12",
     "@hookform/resolvers": "^5.2.2",
